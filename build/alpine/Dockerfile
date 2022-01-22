@@ -11,7 +11,9 @@ RUN adduser \
     --no-create-home \
     "$USER"
 
+RUN mkdir -p /var/log/nginx/
+
 # Copy required files
-COPY server-configs-nginx/nginx.conf /etc/nginx/nginx.conf
-COPY server-configs-nginx/h5bp /etc/nginx/h5bp
-COPY server-configs-nginx/mime.types /etc/nginx/mime.types
+COPY server-configs-nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY server-configs-nginx/h5bp /usr/local/openresty/nginx/conf/h5bp
+COPY server-configs-nginx/mime.types /usr/local/openresty/nginx/conf/mime.types
