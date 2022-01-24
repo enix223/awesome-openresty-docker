@@ -13,7 +13,9 @@ RUN adduser \
 
 RUN mkdir -p /var/log/nginx/
 
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
+
 # Copy required files
-COPY server-configs-nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY build/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY server-configs-nginx/h5bp /usr/local/openresty/nginx/conf/h5bp
 COPY server-configs-nginx/mime.types /usr/local/openresty/nginx/conf/mime.types
